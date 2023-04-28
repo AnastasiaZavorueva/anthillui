@@ -1,4 +1,4 @@
-#  file to collect all tests created for login page
+#  file to collect tests created for login page
 
 from pages.login_page import LoginPage
 from config import Links

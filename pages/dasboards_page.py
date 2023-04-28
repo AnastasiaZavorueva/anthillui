@@ -1,3 +1,7 @@
+#  method to create a Dashboard-Page object
+# contains all basic methods to run on this page
+# ! we should provide browser and URL as parameters when creating an instance of that class
+
 import time
 
 from pages.base_page import BasePage

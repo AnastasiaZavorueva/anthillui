@@ -1,10 +1,13 @@
-import time
+#  method to create a Login-Page object
+# contains all basic methods to run on this page
+# ! we should provide browser and URL as parameters when creating an instance of that class
 
+import time
 from pages.base_page import BasePage
 from pages.locators import LoginPageLocators
 
 
-class LoginPage(BasePage):  # we should provide browser and URL as parameters when creating an instance of that class
+class LoginPage(BasePage):
 
     def login(self, login_credentials):
         email_field = self.browser.find_element(*LoginPageLocators.EMAIL_FIELD)
