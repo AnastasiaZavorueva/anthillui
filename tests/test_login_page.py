@@ -14,6 +14,7 @@ class TestLoginPage:
     @pytest.mark.regression
     def test_login_with_valid(self, browser, credentials):
         login_page = LoginPage(browser, Links.login_page)
+        login_page.open_page()
         login_page.login(credentials)
         time.sleep(2)
         assert browser.current_url == Links.analytics_page, f"Wrong result, expected to be on Analytics page"
@@ -23,6 +24,7 @@ class TestLoginPage:
     @pytest.mark.regression
     def test_login_with_invalid(self, browser, invalid_credentials):
         login_page = LoginPage(browser, Links.login_page)
+        login_page.open_page()
         login_page.login(invalid_credentials)
         # time.sleep(2)
         assert browser.current_url == Links.login_page, f"Wrong result, expected to stay on Login page"
@@ -32,6 +34,7 @@ class TestLoginPage:
     @pytest.mark.regression
     def test_navigation_elements(self, browser):
         login_page = LoginPage(browser, Links.login_page)
+        login_page.open_page()
 
         assert login_page.forgot_password_link_exists()
         login_page.navigate_to_forgot_password()
