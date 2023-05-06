@@ -10,15 +10,15 @@ class WikiSpaceHomePage(BasePage):
 
     # checks that the space title shown matches to the title-to-compare provided
     def title_shown_is_correct(self, title_to_compare_with):
-        title_element = self.browser.find_element(*SpaceHomePageLocators.space_title)
+        title_element = self.browser.find_element(*SpaceHomePageLocators.SPACE_TITLE)
         if title_element.text == title_to_compare_with:
             return True
 
     def all_other_elements_of_page_present(self):
-        favorite_pages_area_label = self.browser.find_elements(*SpaceHomePageLocators.favorite_pages_area_label)
-        all_pages_label = self.browser.find_elements(*SpaceHomePageLocators.all_pages_label)
+        favorite_pages_area_label = self.browser.find_elements(*SpaceHomePageLocators.FAVORITE_PAGES_AREA_LABEL)
+        all_pages_label = self.browser.find_elements(*SpaceHomePageLocators.ALL_PAGES_LABEL)
         default_page_for_space_field_label = self.browser.find_elements(
-            *SpaceHomePageLocators.default_page_for_space_field_label)
+            *SpaceHomePageLocators.DEFAULT_PAGE_FOR_SPACE_FIELD_LABEL)
         if (len(favorite_pages_area_label) == 1) and (len(all_pages_label) == 1) and len(
                 default_page_for_space_field_label) == 1:
             return True

@@ -15,3 +15,7 @@ class DashboardPage(BasePage):
         wiki_button.click()
         time.sleep(4)
 
+    def navigate_to_calendar(self):
+        calendar_button = self.browser.find_element(*DashboardsPageLocators.CALENDAR_BUTTON)
+        calendar_button.click()
+        time.sleep(2)

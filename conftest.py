@@ -1,4 +1,5 @@
 #  file to collect all fixtures
+from datetime import datetime
 
 import pytest
 from selenium import webdriver
@@ -14,7 +15,9 @@ from pages.login_page import LoginPage
 @pytest.fixture(autouse=True)
 def browser():
     browser = webdriver.Chrome(service=Service(executable_path='.chromedriver'))
+    now = datetime.now()
     yield browser
+    # browser.save_screenshot(f"screenshot_{now}.png")
     browser.quit()
 
 

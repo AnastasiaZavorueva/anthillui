@@ -18,7 +18,7 @@ from pages.locators import EditSpacePageLocators
 from pages.wiki_space_home_page import WikiSpaceHomePage
 
 
-class TestScenarioCreateWiki:
+class TestScenarioCreateWikiSpace:
 
     @pytest.mark.smoke
     @pytest.mark.regression

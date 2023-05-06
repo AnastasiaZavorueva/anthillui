@@ -19,4 +19,5 @@ class Links:
     login_with_twitter_page = ""
 
     analytics_page = "https://demo.anthill.su/dashboards/analytics"
+    calendar_page = "https://demo.anthill.su/apps/calendar"
 
