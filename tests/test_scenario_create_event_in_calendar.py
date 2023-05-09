@@ -1,7 +1,7 @@
-#   test scenario ID 3 that 1) creates an event in calendar with the title, type, start datetime,
+#   test scenario ID 3: 1) creates a new event in calendar with the title, type, start datetime,
 #   end datetime, place and description provided in dictionary "event_data" as a parameter
 #   2) then checks that the event created is shown in calendar
-#   3) and then opens event to check that all event data shown is the same as was provided
+#   3) and then opens the event to check that all event data shown is the same as was provided
 
 import time
 import pytest
@@ -18,8 +18,8 @@ class TestScenarioCreateEventInCalendar:
         dashboard_page = DashboardPage(browser, Links.analytics_page)
         time.sleep(1)
         dashboard_page.navigate_to_calendar()
-        calendar_page = CalendarPage(browser, Links.calendar_page)
 
+        calendar_page = CalendarPage(browser, Links.calendar_page)
         calendar_page.navigate_to_create_event()
         calendar_page.create_event(event_data)
 
