@@ -3,9 +3,8 @@
 # ! we should provide browser and URL of the page as parameters when creating an instance of that class
 
 import time
-from pages.locators import WikiPageLocators
+from locators.wiki_page_locators import WikiPageLocators
 from pages.base_page import BasePage
-
 
 class WikiPage(BasePage):
 

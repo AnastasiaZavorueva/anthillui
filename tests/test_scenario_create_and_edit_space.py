@@ -1,21 +1,22 @@
 # test scenario ID 1: create a new space on Wiki page, starts editing and save it (but no changes were made actually),
 # then go back to the Wiki page - and check that the space with the same title and description was created
 # and now is listed on the Wiki page
-# TODO: test to check access rights of the space
-# TODO: after all these steps the space created is deleted
 
 from pages.wiki_page import WikiPage
-from pages.wiki_add_space_page import WikiAddSpacePage
-from pages.wiki_edit_space_page import WikiEditSpacePage
-from pages.dasboards_page import DashboardPage
+from pages.add_wikispace_page import WikiAddSpacePage
+from pages.edit_wikispace_page import WikiEditSpacePage
+from pages.dasboard_page import DashboardPage
 from config import Links
 from tests.test_data import TestData
 import pytest
 import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from pages.locators import EditSpacePageLocators
-from pages.wiki_space_home_page import WikiSpaceHomePage
+from locators.edit_wikispace_page_locators import EditWikiSpacePageLocators
+from pages.wikispace_home_page import WikiSpaceHomePage
+import allure
+from allure_commons.types import AttachmentType
+
 
 
 class TestScenarioCreateWikiSpace:
@@ -24,7 +25,7 @@ class TestScenarioCreateWikiSpace:
     @pytest.mark.regression
     @pytest.mark.parametrize("space_data", TestData.space_data)
     def test_create_and_edit_space(self, browser, space_data, admin_login):  # admin_login here is a fixture to log in first
-        dashboard_page = DashboardPage(browser, Links.analytics_page)
+        dashboard_page = DashboardPage(browser, Links.dashboard_page)
         time.sleep(2)
         dashboard_page.navigate_to_wiki()
 
@@ -38,7 +39,7 @@ class TestScenarioCreateWikiSpace:
         wiki_edit_page = WikiEditSpacePage(browser, Links.wiki_edit_space_page)  # to start editing the space
         wiki_edit_page.save_edit_space_result()  # and save results (actually, no changes were made)
         #  and check that popup message about saving was showed
-        assert WebDriverWait(browser, 3).until(EC.presence_of_element_located(EditSpacePageLocators.CHANGES_SAVED_POPUP)).text == "Успех"
+        assert WebDriverWait(browser, 3).until(EC.presence_of_element_located(EditWikiSpacePageLocators.CHANGES_SAVED_POPUP)).text == "Успех"
 
         #  check that the space created now is shown in the list of spaces on Wiki page
         wiki_edit_page.navigate_to_spaces_list()
@@ -55,7 +56,7 @@ class TestScenarioCreateWikiSpace:
         assert wiki_space_home_page.all_other_elements_of_page_present()
         time.sleep(2)
 
-        #  TODO: delete the test space created
+        #  TODO: delete the test space created?
         # wiki_space_home_page.navigate_to_wiki()
         # time.sleep(1)
         # wiki_page.delete_space_with_title(space_data["title"])

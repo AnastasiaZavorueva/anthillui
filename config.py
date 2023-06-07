@@ -18,6 +18,7 @@ class Links:
     login_with_google_page = ""
     login_with_twitter_page = ""
 
-    analytics_page = "https://demo.anthill.su/dashboards/analytics"
+    dashboard_page = "https://demo.anthill.su/dashboards/analytics"
     calendar_page = "https://demo.anthill.su/apps/calendar"
+    chats_page = "https://demo.anthill.su/apps/chat"
 

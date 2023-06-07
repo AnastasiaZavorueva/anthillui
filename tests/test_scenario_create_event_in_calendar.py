@@ -7,21 +7,25 @@ import time
 import pytest
 from config import Links
 from pages.calendar_page import CalendarPage
-from pages.dasboards_page import DashboardPage
+from pages.dasboard_page import DashboardPage
 from tests.test_data import TestData
+import allure
+from allure_commons.types import AttachmentType
+
 
 
 class TestScenarioCreateEventInCalendar:
 
     @pytest.mark.parametrize("event_data", TestData.event_data)
     def test_create_event(self, browser, event_data, admin_login):
-        dashboard_page = DashboardPage(browser, Links.analytics_page)
+        dashboard_page = DashboardPage(browser, Links.dashboard_page)
         time.sleep(1)
         dashboard_page.navigate_to_calendar()
 
         calendar_page = CalendarPage(browser, Links.calendar_page)
         calendar_page.navigate_to_create_event()
         calendar_page.create_event(event_data)
+        calendar_page.save_event_created()
 
         assert calendar_page.event_in_calendar_exists(event_data) is True
         time.sleep(1)

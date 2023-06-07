@@ -1,7 +1,7 @@
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from pages.base_page import BasePage
-from pages.locators import CalendarPageLocators
+from locators.calendar_page_locators import CalendarPageLocators
 import time
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
@@ -66,16 +66,17 @@ class CalendarPage(BasePage):
         description_field.send_keys(event_data["desc"])
         time.sleep(1)
 
-        save_button = self.browser.find_element(*CalendarPageLocators.SAVE_BUTTON)
-        save_button.submit()
-        time.sleep(3)
-
         # TODO: choosing participants (this field exists only for the type of event "meeting")
         # participants_field = self.browser.find_element(*CalendarPageLocators.PARTICIPANTS_FIELD)
         # participants_field.click()
         # some_participant =
         # some_participant.click()
         # somehow submit this input to move on to the next field
+
+    def save_event_created(self):
+        save_button = self.browser.find_element(*CalendarPageLocators.SAVE_BUTTON)
+        save_button.submit()
+        time.sleep(3)
 
     def set_event_datetime(self, datetime_to_set):
         """helper method (used in create_event method) to choose
@@ -299,3 +300,6 @@ class CalendarPage(BasePage):
     # def main_elements_exist(self):
 
     # def all_day_checkbox_checked(self):
+
+    def click_outside_create_event_form(self):
+        self.browser.click

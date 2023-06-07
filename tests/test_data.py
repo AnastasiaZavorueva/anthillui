@@ -33,3 +33,12 @@ class TestData:
                    "desc": "На встречу надеть теплую шапку"
                    }
                   ]
+
+    two_usernames_for_group_chat = [
+        ["Макаров Павел", "Алексеева Екатерина"]
+    ]
+
+    user_and_message_to_send = [{"username": "Иванов Иван",
+                                 "message": "СообщениеMessage! @#$%^&*()1234567890,."
+                                 }
+                                ]

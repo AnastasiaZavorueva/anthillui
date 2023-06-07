@@ -7,21 +7,25 @@ import time
 import pytest
 from config import Links
 from pages.calendar_page import CalendarPage
-from pages.dasboards_page import DashboardPage
-from pages.locators import CalendarPageLocators
+from pages.dasboard_page import DashboardPage
+from locators.calendar_page_locators import CalendarPageLocators
 from tests.test_data import TestData
+import allure
+from allure_commons.types import AttachmentType
+
 
 class TestScenarioDeleteEventInCalendar:
 
     @pytest.mark.parametrize("event_data", TestData.event_data)
     def test_delete_event_in_calendar(self, browser, admin_login, event_data):
-        dashboard_page = DashboardPage(browser, Links.analytics_page)
+        dashboard_page = DashboardPage(browser, Links.dashboard_page)
         time.sleep(1)
         dashboard_page.navigate_to_calendar()
 
         calendar_page = CalendarPage(browser, Links.calendar_page)
         calendar_page.navigate_to_create_event()
         calendar_page.create_event(event_data)
+        calendar_page.save_event_created()
 
         calendar_page.choose_date_on_left_picker(event_data["start_datetime"])
         calendar_page.open_event(event_data)
@@ -41,12 +45,12 @@ class TestScenarioDeleteEventInCalendar:
     # edit methods in calendar_page, so it wouldn't be nessesary to keep specific state of page
     # (like left picker is opened and so on)
 
-    # freeze reqs of the project
+    # freeze reqs of the project - done
 
-    # connect allure reports to the project
+    # connect allure reports to the project -done
 
     # run tests and push changes on git
 
     # add readme on git
 
-    # create a map of the project
+    # create a map of the project - done
