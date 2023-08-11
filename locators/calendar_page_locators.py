@@ -2,9 +2,9 @@ from selenium.webdriver.common.by import By
 
 
 class CalendarPageLocators:
-    HAMBURGER_BUTTON = (By.XPATH, "//button[@title='calendarDrawerToggler']")
+    HAMBURGER_BUTTON = (By. "//button[@title='calendarDrawerToggler']")
     ADD_EVENT_BUTTON = (By.CSS_SELECTOR, "nav.v-navigation-drawer--left button.v-btn--elevated")
-    ADD_EVENT_FORM = (By.CSS_SELECTOR, "nav.v-navigation-drawer--temporary")
+    ADD_EVENT_FORM = (By.XPATH, "nav.v-navigation-drawer--temporary")
 
     # ! ----------- LOCATORS FOR ELEMENTS IN CREATE/EDIT EVENT FORM
 
@@ -15,22 +15,20 @@ class CalendarPageLocators:
     # (in case of the event type "meeting" also: 5 - PARTICIPANTS_FIELD, 6 - PLACE_FIELD)
     EVENT_FORM_TEXT_FIELDS = (
         By.CSS_SELECTOR, "nav.v-navigation-drawer--temporary div[role='textbox'] input[type='text']")
-    DESCRIPTION_FIELD = (By.CSS_SELECTOR, "nav.v-navigation-drawer--temporary div[role='textbox'] textarea")
+    DESCRIPTION_FIELD = (By.SELECTOR, "nav.v-navigation-drawer--temporary div[role='textbox'] textarea")
 
     # by using the next locator we get a collection of web elements
     # (use these indices to get a specific element from collection):
     # 2 - EVENT_TYPE_FIELD
     EVENT_TYPE_FIELD = (By.CSS_SELECTOR, "nav.v-navigation-drawer--temporary div[role='textbox']")
 
-    CURRENT_YEAR_SHOWN = (By.CSS_SELECTOR, "div.flatpickr-calendar.open input.cur-year")
-    NEXT_MONTH_ARROW_BUTTON = (By.CSS_SELECTOR, "div.flatpickr-calendar.open span.flatpickr-next-month")
+    CURRENT_YEAR_SHOWN = (By.CSS_SELECTOR, "")
+    NEXT_MONTH_ARROW_BUTTON = (By.CSS_SELECTOR, "")
     MONTH_DROPDOWN_LIST = (By.CSS_SELECTOR, "div.flatpickr-calendar.open select.flatpickr-monthDropdown-months")
-    EVENT_HOUR_FIELD = (By.CSS_SELECTOR, "div.flatpickr-calendar.open input.flatpickr-hour")
-    EVENT_MINUTES_FIELD = (By.CSS_SELECTOR, "div.flatpickr-calendar.open input.flatpickr-minute")
+    EVENT_HOUR_FIELD = (By.CSS_SELECTOR, "flatpickr-calendar.open input.flatpickr-hour")
+    EVENT_MINUTES_FIELD = (By.CSS_SELECTOR, "div.flatpickr-calendar")
 
-    ALL_DAYS_OF_SELECTED_MONTH = (By.CSS_SELECTOR,
-                                  "div.flatpickr-calendar.open div.dayContainer span.flatpickr-day:not("
-                                  ".prevMonthDay):not(.nextMonthDay)")
+    ALL_DAYS_OF_SELECTED_MONTH = ()
 
     # using the next locator we get collection of 2 elements
     # (use these indices to get a specific element from collection):
@@ -39,10 +37,10 @@ class CalendarPageLocators:
         By.CSS_SELECTOR, "nav.v-navigation-drawer--temporary input.flat-picker-custom-style.form-control")
 
     EVENT_TYPES = {
-        "event": (By.XPATH, "//div[@class='v-list-item__content']//div[contains(text(),'Мероприятие')]"),
+        "event": (By.PATH, "//div[@class='v-list-item__content']//div[contains(text(),'Мероприятие')]"),
         "meeting": (By.XPATH, "//div[@class='v-list-item__content']//div[contains(text(),'Встеча')]"),
-        "task": (By.XPATH, "//div[@class='v-list-item__content']//div[contains(text(),'Задача')]"),
-        "personal": (By.XPATH, "//div[@class='v-list-item__content']//div[contains(text(),'Личное')]")
+        "task": (By.XPATH, "/div[@class='v-list-item__content']//div[contains(text(),'Задача')]"),
+        "personal": (By.ATH, "//div[@class='v-list-item__content']//div[contains(text(),'Личное')]")
     }
 
     SAVE_BUTTON = (By.CSS_SELECTOR, "nav.v-navigation-drawer--temporary button[type='submit']")
